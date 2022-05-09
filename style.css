@@ -1,3 +1,23 @@
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+nav {
+    padding-left: 30px;
+}
+
+.anchoPage {
+    width: 100%;
+}
+
+div {
+    margin-left: 0px !important;
+
+    margin-right: 0px !important;
+}
+
 body {
     background-color: black;
 };
@@ -25,6 +45,8 @@ body {
     background-color: black !important;
 }
 
+/* Inicio INDEX */
+
 .contenedorTitulo {
     display: flex;
     justify-content: center;
@@ -35,6 +57,23 @@ body {
 .rowCarrousel {
     padding-top: 90px;
 }
+
+.fotosIndex {
+    width: 450px;
+}
+
+.elementoIndex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botonParaJson {
+    font-family:'Roboto flex', sans-serif ;
+}
+
+
+/* Fin index */
 
 /* Inicio PAGE PRODUCTOS */
     .imgCarrito {
@@ -60,3 +99,49 @@ body {
         width: 40px;
     }
 /* Fin PAGE PRODUCTOS */
+
+/* Inicio PAGE QUIENES SOMOS */
+.filaPrincipal {
+    margin-top: 150px;
+}
+
+.fotoQuienesSomos {
+    width: 350px;
+    border-radius: 100%;
+}
+
+.elementoQuienesSomos {
+    display: flex;
+    justify-content: center;
+}
+
+.rolQuienesSomos {
+    opacity: 50%;
+}
+
+h1 {
+    color: aliceblue;
+}
+
+h2 {
+    color: aliceblue;
+    font-family: 'Roboto Flex', sans-serif;
+}
+
+h3 {
+    color: aliceblue;
+}
+
+h4 {
+    color: aliceblue;
+}
+
+h5 {
+    color: aliceblue;
+}
+
+#devCard {
+    margin-top: 150px;
+}
+
+/* Fin PAGE QUIENES SOMOS */

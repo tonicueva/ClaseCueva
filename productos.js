@@ -162,3 +162,7 @@ function recuperar(){
 }
 
 recuperar()
+
+// Usando FETCH
+
+

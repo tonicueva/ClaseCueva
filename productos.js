@@ -1,13 +1,5 @@
 // Haciendo JavaScript de page "PRODUCTOS"
 
-// TOASTIFY de Bienvenida
-Toastify({
-    text: "Welcome",
-    duration: 3000,
-    style: {
-        background: "linear-gradient(to right, #BCA5FF, #FF0000)",
-      }
-    }).showToast();
 // Creo ARRAY de productos
 const arrayProductos = []
 
@@ -58,7 +50,7 @@ function mostrarProductos (array){
                     <div class="card" style="width: 18rem;">
                         <img src=${i.imagen} class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">${i.forma}</h5>
+                            <h5 class="card-title" style="color: black;">${i.forma}</h5>
                             <p class="card-text">${i.color}</p>
                             <a href="#" id = "agregar${i.id}" class="btn btn-primary">Agregar al carrito</a>
                         </div>
@@ -85,12 +77,15 @@ function agregarAlCarrito(id){
     if (masDeUnaUnidad){
         masDeUnaUnidad.unidad = masDeUnaUnidad.unidad + 1
     }
-// Agrego SWEET ALERT
-Swal.fire({
-    icon: 'success',
-    title: 'Agregado al Carrito',
-  })
-// Fin SWEET ALERT
+// Toastify de Agregado
+    Toastify({
+        text: "Agregado al carrito!",
+        duration: 3000,
+        style: {
+            background: "linear-gradient(to right, #BCA5FF, #FF0000)",
+          }
+        }).showToast();
+// Fin Toastify
 
 // Busco el producto en mi array de productos a través de su ID
     let productoAgregar = arrayProductos.find(i => i.id == id)
@@ -111,10 +106,10 @@ Swal.fire({
 function mostrarCarrito(productoAgregar){
     let div = document.createElement("div")
     div.innerHTML = `
-            <h4>${productoAgregar.forma}</h3>
-            <h4>Tamaño: ${productoAgregar.tamanio} cm </h4>
-            <h4>Precio: $${productoAgregar.precio}</h4>
-            <h4 id="und${productoAgregar}">Unidad: ${productoAgregar.unidad}</h4>
+            <h4 class="elementoModal">${productoAgregar.forma}</h3>
+            <h4 class="elementoModal">Tamaño: ${productoAgregar.tamanio} cm </h4>
+            <h4 class="elementoModal">Precio: $${productoAgregar.precio}</h4>
+            <h4 class="elementoModal" id="und${productoAgregar}">Unidad: ${productoAgregar.unidad}</h4>
             <img src="../assets/iconoX.png" id="borrar${productoAgregar.id}"  class="imgBorrarCarrito" alt="borrar">
     `
     contenedorCarrito.appendChild(div)
@@ -123,12 +118,15 @@ function mostrarCarrito(productoAgregar){
     let btnEliminar = document.getElementById(`borrar${productoAgregar.id}`)
 
     btnEliminar.addEventListener("click",()=>{
-// SWEET ALERT
-    Swal.fire({
-        icon: 'success',
-        title: 'Producto Eliminado',
-
-    })
+    
+        //Toastify de Eliminación
+        Toastify({
+        text: "Producto eliminado",
+        duration: 3000,
+        style: {
+            background: "linear-gradient(to left, #BCA5FF, #FF0000)",
+          }
+        }).showToast();
 // Uso filter para crear nuevo array
         arrayCarrito = arrayCarrito.filter(i => i.id != productoAgregar.id)
 // Elimino el producto de HTML
@@ -163,6 +161,67 @@ function recuperar(){
 
 recuperar()
 
-// Usando FETCH
+// Abrir Producto personalizado
+let contenidoDelModalPersonalizado = document.getElementById("contenidoDelModalPersonalizado")
 
 
+let productoPersonalizado = document.getElementById("productoPersonalizado")
+
+productoPersonalizado.addEventListener("click",fnAbrirModal)
+
+function fnAbrirModal(){
+    contenidoDelModalPersonalizado.style.display = "block"
+}
+
+//Cerrar ventana Producto Personalizado
+let cerrarModalPersonalizado = document.getElementById("cerrarModalPersonalizado")
+cerrarModalPersonalizado.addEventListener("click",fnCerrarModal)
+
+function fnCerrarModal(){
+    contenidoDelModalPersonalizado.style.display = "none"
+}
+
+// Mostrar precio aproximado
+let calcularPrecioAproximado = document.getElementById("calcularPrecioAproximado")
+calcularPrecioAproximado.addEventListener("click",fnCalcularPrecioAproximado)
+
+
+function fnCalcularPrecioAproximado(){
+    let altoEnCm = parseInt(document.getElementById("altoEnCm").value)
+    let anchoEnCm = parseInt(document.getElementById("anchoEnCm").value)
+    let precioAproximado = (altoEnCm * anchoEnCm) * 5
+    //Lo agrego al HTML
+    let precioAproximadoParaHtml = document.getElementById("precioAproximadoParaHtml")
+    precioAproximadoParaHtml.innerText = `$${precioAproximado}. Recordá que este es el precio de la seña. Al ser un neón personalizado, se puede cobrar 10% más o 10% menos dependiendo la complejidad`
+    let contenidoDelModalPersonalizado = document.getElementById("contenidoDelModalPersonalizado")
+    contenidoDelModalPersonalizado.style.height = "32.5em"
+}
+
+
+//Función agregar el Neón Personalizado al Carrito
+let botonConfirmarPersonalizado = document.getElementById("botonConfirmarPersonalizado")
+botonConfirmarPersonalizado.addEventListener("click",fnGuardarProductoPersonalizado)
+
+function fnGuardarProductoPersonalizado(){
+    // Toastify de Agregado
+    Toastify({
+        text: "Agregado al carrito!",
+        duration: 3000,
+        style: {
+            background: "linear-gradient(to right, #BCA5FF, #FF0000)",
+          }
+        }).showToast();
+
+    let altoEnCm = parseInt(document.getElementById("altoEnCm").value)
+    let anchoEnCm = parseInt(document.getElementById("anchoEnCm").value)
+    let precioAproximado = (altoEnCm * anchoEnCm) * 5
+
+    let neonPers = new Neones (arrayProductos.length+1,"Personalizado",(document.getElementById("inputColor").value),altoEnCm*anchoEnCm,precioAproximado,"No hay imagen")
+    arrayProductos.push(neonPers)
+    arrayCarrito.push(neonPers)
+
+    mostrarCarrito(neonPers)
+
+    // Cierro el MODAL Personalizado
+    fnCerrarModal()
+}

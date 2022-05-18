@@ -60,18 +60,18 @@
     <!-- MODAL -->
     <div class="row">
         <div class="col-lg-12">
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade modalDeBs" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
+                    <h5 class="modal-title elementoModal" id="exampleModalLabel">Carrito</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                     <div id="contenedorCarrito" class="modal-body">
                         <!-- BODY DE MODAL INGRESADO POR JS -->
                     </div>
                 <div class="modal-footer">
-                    <h5 id="precioTotal">Precio total: S</h5>
+                    <h5 class="elementoModal" id="precioTotal">Precio total: S</h5>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary">Guardar cambios</button>
                 </div>
@@ -116,6 +116,63 @@
         
       </h1>
     </div>
+
+    <!-- Anuncio Neones Personalizados -->
+
+    <div class="divPersonalizado">
+      <p class="txtPersonalizado">
+        Si preferís un neón personalizado al 100%...
+      </p>
+      <h1 class="textoPersonalizado">
+        Diseñá tu propio NEÓN
+      </h1>
+      <p id="productoPersonalizado" class="parrafoPersonalizado">
+        Click acá
+      </p>
+    </div>
+
+<!-- MODAL -->
+
+
+      <div id="contenidoDelModalPersonalizado" class="contenidoDelModal">
+        <!-- Cerrar modal -->
+        <div id="cerrarModalPersonalizado" class="cerrarModal">
+          X
+        </div>
+        <div class="formaNeonTxt">
+          <p class="txtPersonalizado">
+            Qué forma querés que tenga tu neón?
+          </p>
+          <p class="textoEjemplo">
+            Ejemplo: Quiero un neón con forma de nave espacial como la de Star Wars vista desde arriba
+          </p>
+        </div>
+        <input type="text" placeholder="Contanos tu idea">
+        <p class="txtPersonalizado">
+          Elegí un color
+        </p>
+        <input id="inputColor" type="color">
+        <p class="txtPersonalizado">
+          Qué tamaño tendrá aproximadamente?
+        </p>
+        <input id="altoEnCm" class="unInput" type="number" placeholder="Alto (cm)">
+        <input id="anchoEnCm" class="unInput" type="number" placeholder="Ancho (cm)">
+        <div class="contenedorBotonesPersonalizado">
+          <p id="precioAproximadoParaHtml">
+
+          </p>
+          <button id="calcularPrecioAproximado">Calcular precio aproximado</button>
+          <button id="botonConfirmarPersonalizado" class="unBoton">Agregar al carrito</button>
+        </div>
+      </div>
+
+
+<!-- FIN MODAL -->
+
+    <!-- Fin anuncio neones personalizados -->
+
+
+
     <!-- SCRIPT Toastify.JS-->
       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- SRIPT Sweet Alert -->

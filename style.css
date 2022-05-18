@@ -1,4 +1,6 @@
-
+* {
+    box-sizing: border-box;
+}
 
 html {
     scroll-behavior: smooth;
@@ -47,25 +49,119 @@ body {
 
 /* Inicio INDEX */
 
+/* Carrousel */
+.rowCarrousel {
+    padding-top: 90px;
+    height: 25em;
+}
+
+.contenedorCarrousel {
+    height: 25em;
+}
+
+.carouselExampleIndicators {
+    height: 25em;
+}
+
+.carousel-inner{
+    height: 25em;
+}
+
+.imgUno {
+    height: 25em;
+}
+
+.w-100 {
+    height: 25em;
+}
+/* Fin carrousel */
+
 .contenedorTitulo {
     display: flex;
     justify-content: center;
     padding-top: 30px;
 }
 
-
-.rowCarrousel {
-    padding-top: 90px;
+.rowTitulo {
+    margin-top: 9em;
 }
+
+.titulo {
+    font-family: 'Lato', sans-serif;
+    text-shadow: 0 0 5px red,  0 0 15px red,  0 0 30px red,  0 0 50px red;
+}
+
+/* Animación Título */
+
+/*
+.titulo {
+    animation: parpadeo 3s infinite backwards;
+}
+
+@keyframes parpadeo {
+    to {
+        color: gray;
+        text-shadow: none;
+    }
+} 
+*/
+
+/* Fin Animación Título */
 
 .fotosIndex {
     width: 450px;
+    border-radius: 100%;
+    border: 2px solid red;
+}
+
+.imgFondo {
+    background-image: url(../assets/play2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    height: 20em;
+    margin-top: 5em;
+}
+
+.tituloImgFondo {
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 5em;
+    font-family: 'Roboto flex', sans-serif;
+}
+
+.textoImgFondo {
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.containerRowMain {
+    margin-top: 13em;
+    box-shadow: inset 0 0 20px red, 0 0 20px red;
+    border-radius: 80px;
 }
 
 .elementoIndex {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Lato', sans-serif;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+.textoElementoIndex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 5em;
+    padding-right: 5em;
 }
 
 .botonParaJson {
@@ -98,6 +194,105 @@ body {
     .imgBorrarCarrito {
         width: 40px;
     }
+
+    /* Modal de BS */
+    .modalDeBs {
+        left: 33em;
+    }
+
+    .elementoModal {
+        color: black;
+    }
+
+    /* Fin Modal de Bs*/
+
+
+    .divPersonalizado {
+        height: 25em;
+        background-image: url(https://i.pinimg.com/originals/03/65/42/0365425e316e739a8b2db9e79b4bdd32.jpg);
+        height: 50em;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .txtPersonalizado {
+        text-align: center;
+        align-items: center;
+        font-family: 'Lato', sans-serif;
+        color: aliceblue;
+        padding-top: 2em;
+    }
+
+    .textoPersonalizado {
+        text-align: center;
+        align-items: center;
+        font-family: 'Roboto flex', sans-serif;
+        color: aliceblue;
+        margin-top: 2em;
+    }
+
+    .parrafoPersonalizado {
+        text-align: center;
+        align-items: center;
+        margin-top: 2em;
+        color: aliceblue;
+        cursor: pointer;
+    }
+
+    /* Haciendo Modal Personalizado */
+    .contenidoDelModal {
+        height: 30em;
+        width: 30em;
+        background-color: slategrey;
+        text-align: center;
+        position: absolute;
+        padding-right: 3em;
+        padding-left: 3em;
+        position: sticky;
+        margin-top: -520px;
+        left: 34%;
+        display: none;
+    }
+    .textoEjemplo {
+        font-size: 14px;
+    }
+
+    .unInput {
+        margin-bottom: 2em;
+    }
+
+    .contenedorBotonesPersonalizado {
+        padding-right: 12px;
+    }
+
+    .unBoton {
+        margin-bottom: 4em;
+        border-style: none;
+    }
+
+    #calcularPrecioAproximado {
+        border: none;
+    }
+
+    .cerrarModal {
+        background-color: red;
+        height: 36px;
+        width: 36px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        position: absolute;
+        right: -17px;
+        top: -17px;
+        cursor: pointer;
+
+    }
+    /* Fin Modal Personalizado */
+
+
+
 /* Fin PAGE PRODUCTOS */
 
 /* Inicio PAGE QUIENES SOMOS */

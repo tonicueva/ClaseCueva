@@ -23,12 +23,16 @@ const neonUno = new Neones (1,"Nike","Blanco",30,2400,"../assets/nike.jpg");
 const neonDos = new Neones (2,"Nike","Rojo",30,2400,"../assets/nike.jpg");
 const neonTres = new Neones (3,"Nike","Blanco",60,4500,"../assets/nike.jpg");
 const neonCuatro = new Neones (4,"Nike","Blanco",120,8000,"../assets/nike.jpg");
+const neonCinco = new Neones (5,"Tesla","Blanco",40,3800,"../assets/tesla.jpg");
+const neonSeis = new Neones (6,"Tesla","Blanco",80,7000,"../assets/tesla.jpg");
 
 // Pusheo los objetos al array
 arrayProductos.push(neonUno);
 arrayProductos.push(neonDos);
 arrayProductos.push(neonTres);
 arrayProductos.push(neonCuatro);
+arrayProductos.push(neonCinco);
+arrayProductos.push(neonSeis)
 
 // Creo los NODOS de mi página PRODUCTOS
 let contenedorProductos = document.getElementById("contenedorProductos");
@@ -52,6 +56,7 @@ function mostrarProductos (array){
                         <div class="card-body">
                             <h5 class="card-title" style="color: black;">${i.forma}</h5>
                             <p class="card-text">${i.color}</p>
+                            <p> ${i.tamanio} cm </p>
                             <a href="#" id = "agregar${i.id}" class="btn btn-primary">Agregar al carrito</a>
                         </div>
                     </div>
@@ -201,6 +206,7 @@ function fnCalcularPrecioAproximado(){
 //Función agregar el Neón Personalizado al Carrito
 let botonConfirmarPersonalizado = document.getElementById("botonConfirmarPersonalizado")
 botonConfirmarPersonalizado.addEventListener("click",fnGuardarProductoPersonalizado)
+let cantidadNeonesPersonalizados = 0
 
 function fnGuardarProductoPersonalizado(){
     // Toastify de Agregado
@@ -212,16 +218,31 @@ function fnGuardarProductoPersonalizado(){
           }
         }).showToast();
 
+    cantidadNeonesPersonalizados = cantidadNeonesPersonalizados + 1
+
     let altoEnCm = parseInt(document.getElementById("altoEnCm").value)
     let anchoEnCm = parseInt(document.getElementById("anchoEnCm").value)
     let precioAproximado = (altoEnCm * anchoEnCm) * 5
 
-    let neonPers = new Neones (arrayProductos.length+1,"Personalizado",(document.getElementById("inputColor").value),altoEnCm*anchoEnCm,precioAproximado,"No hay imagen")
+    let neonPers = new Neones (arrayProductos.length+1,"Neón personalizado " + cantidadNeonesPersonalizados,(document.getElementById("inputColor").value),altoEnCm*anchoEnCm,precioAproximado,"No hay imagen")
     arrayProductos.push(neonPers)
     arrayCarrito.push(neonPers)
+
 
     mostrarCarrito(neonPers)
 
     // Cierro el MODAL Personalizado
+    document.getElementById("formaNeonPersonalizado").value = ''
+    document.getElementById("inputColor").value = ''
+    document.getElementById("altoEnCm").value = ''
+    document.getElementById("anchoEnCm").value = ''
+
+    let precioAproximadoParaHtml = document.getElementById("precioAproximadoParaHtml")
+    precioAproximadoParaHtml.innerText = ``
+    let contenidoDelModalPersonalizado = document.getElementById("contenidoDelModalPersonalizado")
+    contenidoDelModalPersonalizado.style.height = "30em"
+
     fnCerrarModal()
+    
+
 }

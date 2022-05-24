@@ -25,6 +25,13 @@ const neonTres = new Neones (3,"Nike","Blanco",60,4500,"../assets/nike.jpg");
 const neonCuatro = new Neones (4,"Nike","Blanco",120,8000,"../assets/nike.jpg");
 const neonCinco = new Neones (5,"Tesla","Blanco",40,3800,"../assets/tesla.jpg");
 const neonSeis = new Neones (6,"Tesla","Blanco",80,7000,"../assets/tesla.jpg");
+const neonSiete = new Neones (7,"Happy Hour","Amarillo y Rosa",50,3600,"../assets/happyhour.jpg");
+const neonOcho = new Neones (8,"Conejo","Rojo",50,3500,"../assets/conejo.jpg");
+const neonNueve = new Neones (9,"Conejo","Rojo",100,6750,"../assets/conejo.jpg");
+const neonDiez = new Neones (10,"Espada","Rojo",35,2400,"../assets/espada.jpg");
+const neonOnce = new Neones (11,"Espada","Rojo",70,4600,"../assets/espada.jpg");
+
+
 
 // Pusheo los objetos al array
 arrayProductos.push(neonUno);
@@ -32,7 +39,12 @@ arrayProductos.push(neonDos);
 arrayProductos.push(neonTres);
 arrayProductos.push(neonCuatro);
 arrayProductos.push(neonCinco);
-arrayProductos.push(neonSeis)
+arrayProductos.push(neonSeis);
+arrayProductos.push(neonSiete);
+arrayProductos.push(neonOcho);
+arrayProductos.push(neonNueve);
+arrayProductos.push(neonDiez);
+arrayProductos.push(neonOnce);
 
 // Creo los NODOS de mi página PRODUCTOS
 let contenedorProductos = document.getElementById("contenedorProductos");
@@ -57,6 +69,7 @@ function mostrarProductos (array){
                             <h5 class="card-title" style="color: black;">${i.forma}</h5>
                             <p class="card-text">${i.color}</p>
                             <p> ${i.tamanio} cm </p>
+                            <h6>Precio: $${i.precio}</h6>
                             <a href="#" id = "agregar${i.id}" class="btn btn-primary">Agregar al carrito</a>
                         </div>
                     </div>
@@ -243,6 +256,6 @@ function fnGuardarProductoPersonalizado(){
     contenidoDelModalPersonalizado.style.height = "30em"
 
     fnCerrarModal()
-    
-
 }
+
+//Para comprar y pagar con tarjeta

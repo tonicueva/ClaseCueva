@@ -94,8 +94,18 @@ function agregarAlCarrito(id){
     let masDeUnaUnidad = arrayCarrito.find(i => i.id == id)
     if (masDeUnaUnidad){
         masDeUnaUnidad.unidad = masDeUnaUnidad.unidad + 1
-    }
-// Toastify de Agregado
+        document.getElementById(`und${masDeUnaUnidad.id}`).innerHTML = `<h4 class="elementoModal" id="und${masDeUnaUnidad.id}">Unidad: ${masDeUnaUnidad.unidad}</h4>`
+        // Toastify de Agregado
+        Toastify({
+            text: "Agregado al carrito!",
+            duration: 3000,
+            style: {
+                background: "linear-gradient(to right, #BCA5FF, #FF0000)",
+            }
+            }).showToast();
+// Fin Toastify
+    }else{
+        // Toastify de Agregado
     Toastify({
         text: "Agregado al carrito!",
         duration: 3000,
@@ -116,6 +126,7 @@ function agregarAlCarrito(id){
 
 // Agrego la información al local storage
     localStorage.setItem("carrito",JSON.stringify(arrayCarrito))
+    }
 
     
 }
@@ -127,7 +138,7 @@ function mostrarCarrito(productoAgregar){
             <h4 class="elementoModal">${productoAgregar.forma}</h3>
             <h4 class="elementoModal">Tamaño: ${productoAgregar.tamanio} cm </h4>
             <h4 class="elementoModal">Precio: $${productoAgregar.precio}</h4>
-            <h4 class="elementoModal" id="und${productoAgregar}">Unidad: ${productoAgregar.unidad}</h4>
+            <h4 class="elementoModal" id="und${productoAgregar.id}">Unidad: ${productoAgregar.unidad}</h4>
             <img src="../assets/iconoX.png" id="borrar${productoAgregar.id}"  class="imgBorrarCarrito" alt="borrar">
     `
     contenedorCarrito.appendChild(div)
@@ -259,3 +270,126 @@ function fnGuardarProductoPersonalizado(){
 }
 
 //Para comprar y pagar con tarjeta
+
+document.getElementById("botonCompra").addEventListener("click",fnAbrirModalCompra)
+function fnAbrirModalCompra(){
+    
+    let modalPagar = document.getElementById("modalPagar")
+    modalPagar.style.display = "block"
+    let modalDeBs = document.getElementById("modalDeBs")
+    modalDeBs.style.display = "none"
+}
+
+const tarjeta = document.getElementById("tarjeta")
+const btnAbrirFormulario = document.getElementById("btn-abrir-formulario")
+const formulario = document.getElementById("formulario-tarjeta")
+const numeroTarjeta = document.querySelector('#tarjeta .numero')
+const nombreTarjeta = document.querySelector('#tarjeta .nombre')
+const logoMarca = document.getElementById("logo-marca")
+const firma = document.querySelector('#tarjeta .firma p')
+const mesExpiracion = document.querySelector('#tarjeta .mes')
+const yearExpiracion = document.querySelector('#tarjeta .year')
+const ccv = document.querySelector('#tarjeta .ccv')
+
+const mostrarFrente = () => {
+	if(tarjeta.classList.contains('active')){
+		tarjeta.classList.remove('active');
+	}
+}
+
+tarjeta.addEventListener('click',() => {
+	tarjeta.classList.toggle('active');
+});
+btnAbrirFormulario.addEventListener('click', () => {
+	btnAbrirFormulario.classList.toggle('active');
+	formulario.classList.toggle('active');
+});
+
+for(let i = 1; i <= 12; i++){
+	let opcion = document.createElement('option');
+	opcion.value = i;
+	opcion.innerText = i;
+	formulario.selectMes.appendChild(opcion);
+}
+
+const anioActual = new Date().getFullYear();
+for(let i = anioActual; i <= anioActual + 8; i++){
+	let opcion = document.createElement('option');
+	opcion.value = i;
+	opcion.innerText = i;
+	formulario.selectYear.appendChild(opcion);
+}
+
+formulario.inputNumero.addEventListener('keyup', (i) => {
+	let valorInput = i.target.value;
+	formulario.inputNumero.value = valorInput
+	numeroTarjeta.textContent = valorInput;
+
+	if(valorInput == ''){
+		numeroTarjeta.textContent = '#### #### #### ####';
+
+		logoMarca.innerHTML = '';
+	}
+	if(valorInput[0] == 4){
+		logoMarca.innerHTML = ''
+		const imagen = document.createElement('img');
+		imagen.src = '../assets/visa-logo.png';
+        logoMarca.appendChild(imagen);
+	} else if(valorInput[0] == 5){
+		logoMarca.innerHTML = '';
+		const imagen = document.createElement('img');
+		imagen.src = '../assets/logo-Mastercard.png';
+        logoMarca.appendChild(imagen);
+	}
+	mostrarFrente();
+});
+
+// Input nombre de tarjeta
+formulario.inputNombre.addEventListener('keyup', (i) => {
+	let valorInput = i.target.value;
+
+	formulario.inputNombre.value = valorInput.replace(/[0-9]/g, '');
+	nombreTarjeta.textContent = valorInput;
+	firma.textContent = valorInput;
+
+	if(valorInput == ''){
+		nombreTarjeta.textContent = 'Matías Aguirre';
+	}
+	mostrarFrente();
+});
+
+formulario.selectMes.addEventListener('change', (i) => {
+	mesExpiracion.textContent = i.target.value;
+	mostrarFrente();
+});
+
+formulario.selectYear.addEventListener('change', (i) => {
+	yearExpiracion.textContent = i.target.value.slice(2);
+	mostrarFrente();
+});
+
+formulario.inputCCV.addEventListener('keyup', () => {
+	if(!tarjeta.classList.contains('active')){
+		tarjeta.classList.toggle('active');
+	}
+
+	formulario.inputCCV.value = formulario.inputCCV.value
+	ccv.textContent = formulario.inputCCV.value;
+});
+
+let btnEnviar = document.getElementById("btnEnviar")
+btnEnviar.addEventListener('click', fnComprado)
+function fnComprado (){
+    console.log(arrayCarrito)
+     //Toastify de Compra
+     Toastify({
+        text: "Compra Exitosa",
+        duration: 3000,
+        style: {
+            background: "linear-gradient(to left, #BCA5FF, #FF0000)",
+          }
+        }).showToast();
+        let modalPagar = document.getElementById("modalPagar")
+        modalPagar.style.display = "none"
+}
+

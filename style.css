@@ -1,6 +1,55 @@
-* {
-    box-sizing: border-box;
+/* Media query para Mobile */
+
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+    
+    .navbar-toggler {
+        background-color: white !important;
+    }
+
+    .fotosIndex {
+        width: 200px !important;
+        height: auto !important;
+    }
+    
+    .card {
+        width: 17rem;
+        height: 32em;
+    }
+
+    .contenidoDelModal {
+        height: 44em !important; 
+        width: 17em !important;
+        left: 15% !important;
+    }
+
+    #calcularPrecioAproximado {
+        margin-bottom: 13px;
+    }
+
+    .divRRSSfooter {
+        display: flex;
+    }
+
+    .rightsReserved {
+        margin-right: 6px;
+        font-size: 20px;
+    }
+
+    .divDeFooter {
+        padding-left: 40px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
 }
+
+/* Fin media query Mobile*/
 
 html {
     scroll-behavior: smooth;
